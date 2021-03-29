@@ -35,3 +35,7 @@ Route::get('/contact', function () {
 })->name('contact-form');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('posts/{id}', Post::class);
+
+//This is connected to app/Http/Controllers/PostController (see detail in there)
+Route::get('/postss/',[\App\Http\Controllers\PostController::class, 'index'])->name('public_posts_index');
+Route::get('/postss/{id}',[\App\Http\Controllers\PostController::class, 'show'])->name('public_posts_show');

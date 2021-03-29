@@ -25,13 +25,19 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/posts') }}" class="text-sm text-gray-700 underline">Main</a>
+                        <a href="{{ url('/posts') }}" class="text-sm text-gray-700 underline">See Posts</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                         @endif
+
+
+                    <!--This is connected to route/web.php, look on the 'public_posts_index' (Add Posts title next to Login, Register)-->
+                        <a href="{{ route('public_posts_index') }}" class="text-sm text-gray-700 underline">Posts</a>
+
+
                     @endauth
                 </div>
             @endif

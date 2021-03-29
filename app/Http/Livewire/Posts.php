@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\Auth;
 class Posts extends Component
 {
     public $posts, $title, $body, $published, $post_id;
-    public $viewAll = 0;
+    //public $viewAll = 0;
     public $title_filter;
     public $isOpen = 0;
+
+    public $viewAll = 'on';
+    public $viewPublished = 'off';
 
     public function render()
     {
@@ -22,14 +25,14 @@ class Posts extends Component
                 ->get();
         } else {
             $this->posts = Post::where('user_id', Auth::user()->id)
-            ->orWhere('published', '1')
             ->where('title', 'like', '%' . $this->title_filter. '%')
             ->get();
         }
 
-        return view('livewire.posts');
 
+        return view('livewire.posts');
     }
+
 
     public function create()
     {
@@ -98,11 +101,5 @@ class Posts extends Component
     {
         Post::find($id)->delete();
         session()->flash('message', 'Post Deleted Successfully.');
-    }
-
-    public function search(){
-
-
-        session()->flash('message', 'Searched Post');
     }
 }
