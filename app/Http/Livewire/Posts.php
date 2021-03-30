@@ -10,22 +10,20 @@ use Illuminate\Support\Facades\Auth;
 class Posts extends Component
 {
     public $posts, $title, $body, $published, $post_id;
-    //public $viewAll = 0;
-    public $title_filter;
+    public $viewAll = 0;
     public $isOpen = 0;
 
-    public $viewAll = 'on';
-    public $viewPublished = 'off';
 
     public function render()
     {
         if($this->viewAll == 0){
             $this->posts = Post::where('user_id', Auth::user()->id)
-                ->where('title', 'like', '%' . $this->title_filter. '%')
+                ->where('published','=', 1)
                 ->get();
         } else {
             $this->posts = Post::where('user_id', Auth::user()->id)
-            ->where('title', 'like', '%' . $this->title_filter. '%')
+                ->where('published','=', 0)
+                ->orWhere('published', 1)
             ->get();
         }
 

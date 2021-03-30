@@ -35,6 +35,9 @@
 
 
                     <!--This is connected to route/web.php, look on the 'public_posts_index' (Add Posts title next to Login, Register)-->
+                    <!--When the user click on the Posts, it will trigger the link public_posts_index in the routes/web.php, then the web.php
+                    will trigger the index function in PostController. The index function will trigger the variable "posts" which is used by
+                    postss.blade.php to list all the posts of the user-->
                         <a href="{{ route('public_posts_index') }}" class="text-sm text-gray-700 underline">Posts</a>
                         <a href="{{ route('public_pages_index') }}" class="text-sm text-gray-700 underline">Pages</a>
 

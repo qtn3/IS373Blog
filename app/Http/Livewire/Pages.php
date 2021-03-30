@@ -30,7 +30,7 @@ class Pages extends Component
         }
 
 
-        return view('livewire.page');
+        return view('livewire.pages');
     }
 
 

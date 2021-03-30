@@ -47,6 +47,7 @@
                 <tbody>
 
                 @foreach($posts as $post)
+                    @if($post->published == 1 && Auth::user()->id == $post->user_id  )
                     <tr>
                         <td class="border px-4 py-2">{{ $post->id }}</td>
                         <td class="border px-4 py-2 overflow-ellipsis truncate ">{{ $post->title }}</td>
@@ -54,12 +55,25 @@
                         <td class="border px-4 py-2 overflow-ellipsis truncate">Published</td>
                         <td class="border px-4 py-2">
                             <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"><a href="/posts/{{ $post->id }}">View</a></button>
-                            @if (Auth::user()->id == $post->user_id  )
                                 <button wire:click="edit({{ $post->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
                                 <button wire:click="delete({{ $post->id }})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
-                            @endif
                         </td>
                     </tr>
+                    @elseif($post->published == 0 && Auth::user()->id == $post->user_id  )
+                        <tr>
+                            <td class="border px-4 py-2">{{ $post->id }}</td>
+                            <td class="border px-4 py-2 overflow-ellipsis truncate ">{{ $post->title }}</td>
+                            <td class="border px-4 py-2 overflow-ellipsis truncate">{{ $post->body }}</td>
+                            <td class="border px-4 py-2 overflow-ellipsis truncate">No Published</td>
+                            <td class="border px-4 py-2">
+                                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"><a href="/posts/{{ $post->id }}">View</a></button>
+                                @if (Auth::user()->id == $post->user_id  )
+                                    <button wire:click="edit({{ $post->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
+                                    <button wire:click="delete({{ $post->id }})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                                @endif
+                            </td>
+                        </tr>
+                        @endif
                 @endforeach
                 </tbody>
             </table>
