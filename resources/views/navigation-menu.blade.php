@@ -21,8 +21,12 @@
                     <x-jet-nav-link href="{{ route('posts') }}" :active="request()->routeIs('posts')">
                         {{ __('Posts') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('pages') }}" :active="request()->routeIs('pages')">
+                        {{ __('Pages') }}
+                    </x-jet-nav-link>
                 </div>
                 <div class="ml-3  mt-4 relative">
+                    <!--This is replaced by <x-jet-nav-link href="{{ route('pages') }}" ...
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
 
@@ -47,6 +51,7 @@
 
                         </x-slot>
                     </x-jet-dropdown>
+                    -->
                 </div>
             </div>
             <div class="hidden sm:flex sm:items-center sm:ml-6">

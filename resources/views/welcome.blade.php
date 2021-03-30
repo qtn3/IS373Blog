@@ -36,7 +36,7 @@
 
                     <!--This is connected to route/web.php, look on the 'public_posts_index' (Add Posts title next to Login, Register)-->
                         <a href="{{ route('public_posts_index') }}" class="text-sm text-gray-700 underline">Posts</a>
-
+                        <a href="{{ route('public_pages_index') }}" class="text-sm text-gray-700 underline">Pages</a>
 
                     @endauth
                 </div>
